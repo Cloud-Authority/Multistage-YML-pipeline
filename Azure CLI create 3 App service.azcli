@@ -1,0 +1,20 @@
+Azure CLI script to create 3 App service resources in Azure
+
+az login
+az account list -o table
+az account set -s "a1d3525d-bdc2-43ae-ad92-471f4d940ae1"
+
+webappsuffix=$RANDOM
+
+az group create --name rg-spacegamesid --location eastus
+
+az appservice plan create --name space-game-asp-sid --resource-group rg-spacegamesid --sku B1 --is-linux
+
+az webapp create --name space-game-dev-$webappsuffix --resource-group rg-spacegamesid --plan space-game-asp-sid --runtime "DOTNET|6.0"
+
+az webapp create --name space-game-test-$webappsuffix --resource-group rg-spacegamesid --plan space-game-asp-sid --runtime "DOTNET|6.0"
+
+az webapp create --name space-game-staging-$webappsuffix --resource-group rg-spacegamesid --plan space-game-asp-sid --runtime "DOTNET|6.0"
+
+--get status 
+az webapp list --resource-group rg-spacegamesid --query "[].{hostName: defaultHostName, state: state}" --output table

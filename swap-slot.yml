@@ -1,0 +1,18 @@
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '<service-connection-name>'
+    appType: webAppLinux
+    appName: '<app-name>'
+    deployToSlotOrASE: true
+    resourceGroupName: '<name of resource group>'
+    slotName: staging
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+
+- task: AzureAppServiceManage@0
+  inputs:
+    azureSubscription: '<service-connection-name>'
+    appType: webAppLinux
+    WebAppName: '<app-name>'
+    ResourceGroupName: '<name of resource group>'
+    SourceSlot: staging
+    SwapWithProduction: true
