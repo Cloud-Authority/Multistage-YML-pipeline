@@ -2,7 +2,7 @@ Azure CLI script to create 3 App service resources in Azure
 
 az login
 az account list -o table
-az account set -s "a1d3525d-bdc2-43ae-ad92-471f4d940ae1"
+az account set -s "<subscriptin id>"
 
 webappsuffix=$RANDOM
 
