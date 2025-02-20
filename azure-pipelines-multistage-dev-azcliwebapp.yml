@@ -113,7 +113,7 @@ stages:
                   az appservice plan create --name $APP_SERVICE_PLAN --resource-group $RESOURCE_GROUP --sku B1 --is-linux || exit 1
                   
                   # Create Web App
-                  az webapp create --name $WEBAPP_NAME --resource-group $RESOURCE_GROUP --plan $APP_SERVICE_PLAN --runtime "DOTNETCORE:6" || exit 1
+                  az webapp create --name $WEBAPP_NAME --resource-group $RESOURCE_GROUP --plan $APP_SERVICE_PLAN --runtime "DOTNETCORE:6.0" || exit 1
                   
                   echo "Web app created successfully."
                 else
